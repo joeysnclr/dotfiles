@@ -1,3 +1,5 @@
+import os
+
 
 # VISUALS
 
@@ -13,7 +15,8 @@ c.tabs.favicons.show = 'never'
 
 
 # home page
-home = "/Users/joe/dfm/home.html"
+homeDir = os.environ.get("HOME")
+home = f"{homeDir}/dfm/home.html"
 c.url.default_page = home
 c.url.start_pages = [home]
 

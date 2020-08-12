@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/joe/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # set zsh theme
 ZSH_THEME="nord"
@@ -13,6 +13,7 @@ source $ZSH/oh-my-zsh.sh
 
 # PATH
 export PATH=$PATH":$HOME/bin" # add ~/bin to path
+export PATH=$PATH":$HOME/.local/bin" # add ~/bin to path
 
 # Vim 
 bindkey -v # vim in cli
