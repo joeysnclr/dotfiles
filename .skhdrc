@@ -1,0 +1,58 @@
+########################
+# GUIDE
+# alt : move window focus, basic movements
+# shift + alt : move focused window
+# shift + cmd : delete/move desktop focus
+
+# opening windows
+shift + alt - t : osascript ~/bin/newWin
+
+
+# focus window
+alt - h : yabai -m window --focus west
+alt - j : yabai -m window --focus south
+alt - k : yabai -m window --focus north
+alt - l : yabai -m window --focus east
+
+# move window
+shift + alt - h : yabai -m window --warp west
+shift + alt - j : yabai -m window --warp south
+shift + alt - k : yabai -m window --warp north
+shift + alt - l : yabai -m window --warp east
+
+# create new desktop and move focus to it
+shift + alt - n : yabai -m space --create && \
+                  index="$(yabai -m query --spaces --display | jq 'map(select(."native-fullscreen" == 0))[-1].index')" && \
+                  yabai -m space --focus "${index}"
+
+# destroy desktop
+shift + cmd - w : yabai -m space --destroy
+
+# focus desktop
+shift + cmd - 1 : yabai -m space --focus  1 && yabai -m window --focus mouse
+shift + cmd - 2 : yabai -m space --focus  2 && yabai -m window --focus mouse
+shift + cmd - 3 : yabai -m space --focus  3 && yabai -m window --focus mouse
+shift + cmd - 4 : yabai -m space --focus  4 && yabai -m window --focus mouse
+shift + cmd - 5 : yabai -m space --focus  5 && yabai -m window --focus mouse
+
+# increase resize windows
+shift + alt - a : yabai -m window --resize left:-20:0
+shift + alt - s : yabai -m window --resize bottom:0:20
+shift + alt - w : yabai -m window --resize top:0:-20
+shift + alt - d : yabai -m window --resize right:20:0
+
+# decrease window size
+shift + ctrl - a : yabai -m window --resize left:20:0
+shift + ctrl - s : yabai -m window --resize bottom:0:-20
+shift + ctrl - w : yabai -m window --resize top:0:20
+shift + ctrl - d : yabai -m window --resize right:-20:0
+
+# move window to desktop
+shift + alt - 1 : yabai -m window --space 1 && yabai -m space --focus 1
+shift + alt - 2 : yabai -m window --space 2 && yabai -m space --focus 2
+shift + alt - 3 : yabai -m window --space 3 && yabai -m space --focus 3
+shift + alt - 4 : yabai -m window --space 4 && yabai -m space --focus 4
+shift + alt - 5 : yabai -m window --space 5 && yabai -m space --focus 5
+
+# toggle focused windows float
+shift + alt - f: yabai -m window --toggle float
