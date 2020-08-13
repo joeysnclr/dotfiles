@@ -124,7 +124,7 @@ nnoremap <leader>ut :UndotreeToggle<cr>
 
 
 " -- visual config ---
-colorscheme nord
+colorscheme gruvbox
 set termguicolors
 let g:Hexokinase_highlighters = ['virtual']
 :autocmd InsertEnter * set cul " changes current line color in insert mode
