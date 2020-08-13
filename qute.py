@@ -71,5 +71,4 @@ config.bind(';', 'set-cmd-text :')
 
 
 # THEME
-
-config.source("nord.py")
+config.source("theme.py")
