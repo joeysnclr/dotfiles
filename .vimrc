@@ -52,6 +52,9 @@ set relativenumber
 set noshowmode
 set timeoutlen=1000 ttimeoutlen=0
 set lazyredraw " stop flashing when running macros and keybindings
+set splitbelow " h splits open below
+set splitright " v splits open to the right
+
 
 " _              _     _           _     
 " | |            | |   (_)         | |    
@@ -147,5 +150,10 @@ function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
+" fzf open file in horzintal split on enter
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'enter': 'vsplit' }
 
 
