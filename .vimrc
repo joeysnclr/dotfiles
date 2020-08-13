@@ -97,7 +97,7 @@ nnoremap <leader>l <c-w>l
 
 " - VIMRC RELATED -
 " vimrc edit
-nnoremap <leader>ev :vsplit ~/.vimrc<cr>
+nnoremap <leader>ev :vsplit ~/dfm/.vimrc<cr>
 " vimrc source
 nnoremap <leader>sv :source ~/.vimrc<cr>
 
@@ -120,6 +120,9 @@ let g:user_emmet_leader_key='<C-e>'
 nnoremap <leader>df :Goyo<cr>
 " open undotree
 nnoremap <leader>ut :UndotreeToggle<cr>
+" VIMBEGOOD
+nnoremap <leader>vbg :VimBeGood<cr>
+
 
 " - AUTOCMDS -
 " update dotfiles on save
