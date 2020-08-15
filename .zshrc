@@ -47,6 +47,7 @@ alias lst="exa -a --tree" # tree list
 alias cl="clear" # clear
 alias v="nvim" # e -> neovim
 # git aliases
+alias gs="git status"
 alias ga="git add"
 alias gc="git commit -m"
 alias gp="git push origin master"

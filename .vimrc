@@ -9,7 +9,7 @@
 call plug#begin('~/.vim/plugged')
 " color schemes
 Plug 'arcticicestudio/nord-vim' 
-Plug 'morhetz/gruvbox' 
+Plug 'gruvbox-community/gruvbox' 
 " visuals
 Plug 'vim-airline/vim-airline' " bottom status bar
 Plug 'junegunn/goyo.vim' " zen mode
@@ -74,15 +74,16 @@ nnoremap ; :
 " colon to go to next f/t occurence
 nnoremap : ;
 " beggining of line
-nnoremap <s-h> 0
+nnoremap H ^
 " end of line
-nnoremap <s-l> $
+nnoremap L $
 " down a paragraph, center line
-nnoremap <s-j> }zz
+nnoremap J }zz
 " up paragraph, center line
-nnoremap <s-k> {zz
+nnoremap K {zz
 " redo (opposite of undo)
-nnoremap <s-u> <c-r>
+nnoremap U <c-r>
+
 
 " - BUFFERS, SPLITS, ETC... -
 " save buffer
@@ -117,7 +118,7 @@ nnoremap <leader>rn <Plug>(coc-rename)
 " emmit complete <C-e>,
 let g:user_emmet_leader_key='<C-e>'
 " distraction free mode
-nnoremap <leader>df :Goyo<cr>
+nnoremap <leader>df :Goyo<cr>:set relativenumber!<cr>:echom ""<cr>
 " open undotree
 nnoremap <leader>ut :UndotreeToggle<cr>
 " VIMBEGOOD
@@ -126,7 +127,10 @@ nnoremap <leader>vbg :VimBeGood<cr>
 
 " - AUTOCMDS -
 " update dotfiles on save
-:autocmd BufWritePost ~/dfm/* :!jdfm update
+augroup jdfm
+    autocmd!
+    autocmd BufWritePost ~/dfm/* :!jdfm update
+augroup END
 
 
 " -- visual config ---
@@ -154,9 +158,6 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 " fzf open file in horzintal split on enter
-let g:fzf_action = {
-  \ 'ctrl-t': 'tab split',
-  \ 'ctrl-x': 'split',
-  \ 'enter': 'vsplit' }
+let g:fzf_action = { 'enter': 'vsplit' }
 
 
