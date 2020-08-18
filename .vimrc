@@ -87,14 +87,19 @@ nnoremap U <c-r>
 
 " - BUFFERS, SPLITS, ETC... -
 " save buffer
-nnoremap <leader>w :w!<cr>
+nnoremap <leader>w :w<cr>
 " quit buffer
-nnoremap <leader>q :q!<cr>
+nnoremap <leader>q :q<cr>
 " move between splits
 nnoremap <leader>h <c-w>h
 nnoremap <leader>j <c-w>j
 nnoremap <leader>k <c-w>k
 nnoremap <leader>l <c-w>l
+" resize splits
+nnoremap <c-l> :vertical resize +3<cr>
+nnoremap <c-h> :vertical resize -3<cr>
+nnoremap <c-k> :resize +3<cr>
+nnoremap <c-j> :resize -3<cr>
 
 " - VIMRC RELATED -
 " vimrc edit
@@ -113,6 +118,12 @@ nnoremap <leader>fl :Ag<cr>
 nnoremap <leader>gd <Plug>(coc-definition)
 " coc rename definition
 nnoremap <leader>rn <Plug>(coc-rename)
+
+" - AUTO PAIR -
+inoremap { {}<esc>i
+inoremap [ []<esc>i
+inoremap ( ()<esc>i
+
 
 " - MISC -
 " emmit complete <C-e>,
@@ -158,6 +169,6 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 " fzf open file in horzintal split on enter
-let g:fzf_action = { 'enter': 'vsplit' }
+let g:fzf_action = { 'alt-enter': 'vsplit' }
 
 
