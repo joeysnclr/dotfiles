@@ -37,7 +37,7 @@ set expandtab
 set smarttab
 set smartindent
 set autoindent
-set wrap
+set nowrap
 set ignorecase
 set smartcase
 set hlsearch
@@ -112,6 +112,8 @@ nnoremap <leader>sv :source ~/.vimrc<cr>
 nnoremap <leader>ff :FZF<cr>
 " Fine Line open fuzzy line search
 nnoremap <leader>fl :Ag<cr>
+" Find Buffer
+nnoremap <leader>fb :Buffers<cr>
 
 " - COC -
 " coc go to definition
@@ -124,6 +126,16 @@ inoremap { {}<esc>i
 inoremap [ []<esc>i
 inoremap ( ()<esc>i
 
+" - SHELL COMMANDS -
+nnoremap <leader>tc :!touch 
+nnoremap <leader>mk :!mkdir 
+
+" - FILE SPECIFIC
+augroup filespecific
+    autocmd!
+    autocmd FileType python nnoremap <leader>rr :!python3 %<cr>
+    autocmd FileType python autocmd BufWritePre <buffer> Autopep8 " py formatting, format on save
+augroup END
 
 " - MISC -
 " emmit complete <C-e>,
@@ -134,9 +146,6 @@ nnoremap <leader>df :Goyo<cr>:set relativenumber!<cr>:echom ""<cr>
 nnoremap <leader>ut :UndotreeToggle<cr>
 " VIMBEGOOD
 nnoremap <leader>vbg :VimBeGood<cr>
-
-
-" - AUTOCMDS -
 " update dotfiles on save
 augroup jdfm
     autocmd!
@@ -156,7 +165,6 @@ let $FZF_DEFAULT_OPTS = '--reverse' " fzf window
 " --- utilities config ---
 let g:prettier#autoformat = 1 " auto save all prettier files
 let g:prettier#autoformat_require_pragma = 0 " auto save all prettier files
-autocmd FileType python autocmd BufWritePre <buffer> Autopep8 " py formatting, format on save
 let g:autopep8_disable_show_diff=1 " py formatting, hide change window
 " coc tab through autocomplete menu
 inoremap <silent><expr> <TAB>

@@ -52,6 +52,7 @@ alias ga="git add"
 alias gc="git commit -m"
 alias gp="git push origin master"
 alias gpl="git pull origin master"
+alias t="kitty @ new-window --window-type os"
 
 
 
