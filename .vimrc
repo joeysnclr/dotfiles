@@ -75,12 +75,16 @@ nnoremap ; :
 nnoremap : ;
 " beggining of line
 nnoremap H ^
+vnoremap H ^
 " end of line
 nnoremap L $
+vnoremap L $
 " down a paragraph, center line
 nnoremap J }zz
+vnoremap J }zz
 " up paragraph, center line
 nnoremap K {zz
+vnoremap K {zz
 " redo (opposite of undo)
 nnoremap U <c-r>
 
@@ -109,7 +113,7 @@ nnoremap <leader>sv :source ~/.vimrc<cr>
 
 " - FZF -
 " Find File open fuzzy file search
-nnoremap <leader>ff :FZF<cr>
+nnoremap <leader>ff :GFiles<cr>
 " Fine Line open fuzzy line search
 nnoremap <leader>fl :Ag<cr>
 " Find Buffer
@@ -117,9 +121,19 @@ nnoremap <leader>fb :Buffers<cr>
 
 " - COC -
 " coc go to definition
-nnoremap <leader>gd <Plug>(coc-definition)
+nmap <leader>gd <Plug>(coc-definition)
 " coc rename definition
-nnoremap <leader>rn <Plug>(coc-rename)
+nmap <leader>rn <Plug>(coc-rename)
+" show documentation
+nmap <leader>dc :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
 
 " - AUTO PAIR -
 inoremap { {}<esc>i
@@ -134,7 +148,6 @@ nnoremap <leader>mk :!mkdir
 augroup filespecific
     autocmd!
     autocmd FileType python nnoremap <leader>rr :!python3 %<cr>
-    autocmd FileType python autocmd BufWritePre <buffer> Autopep8 " py formatting, format on save
 augroup END
 
 " - MISC -
@@ -166,6 +179,8 @@ let $FZF_DEFAULT_OPTS = '--reverse' " fzf window
 let g:prettier#autoformat = 1 " auto save all prettier files
 let g:prettier#autoformat_require_pragma = 0 " auto save all prettier files
 let g:autopep8_disable_show_diff=1 " py formatting, hide change window
+let g:autopep8_on_save = 1 " py formatting, on save
+
 " coc tab through autocomplete menu
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
@@ -177,6 +192,6 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 " fzf open file in horzintal split on enter
-let g:fzf_action = { 'alt-enter': 'vsplit' }
+let g:fzf_action = {'alt-enter': 'vsplit'}
 
 

@@ -4,9 +4,6 @@
 # shift + alt : move focused window
 # shift + cmd : delete/move desktop focus
 
-# opening windows
-shift + alt - t : kitty @ launch --title Output --keep-focus cat
-
 
 # focus window
 alt - h : yabai -m window --focus west
